@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/maoyan.css">
+    <script src="../js/data.js"></script>
+</head>
+<body>
+    <div id="maoyan">
+        <ul>
+            <!-- <li>
+                <div class="left">
+                    <img src="http://p0.meituan.net/128.180/movie/71fba05fbe4912cb70d27b87c3c856393364925.jpg" alt="">
+                </div>
+                <ul class="right">
+                    <li>
+                        <div>
+                            <span>哥斯拉2: 怪兽之王</span>
+                            <p>
+                                <span>3D</span><span>IMAX</span>
+                            </p>
+                        </div>
+                        <p>观众评 <span>8.5</span></p>
+                        <p>主演: 凯尔凯尔,凯尔凯尔凯,尔凯尔凯尔</p>
+                        <p>
+                            今天262家影院放映3399场
+                        </p>
+                    </li>
+                    <li>
+                        <span>购票</span>
+                    </li>
+                </ul>
+            </li> -->
+        </ul>
+    </div>
+    
+    <script>
+        window.onload = function(){
+            // 1.获取节点
+            let oUl = document.querySelector("#maoyan>ul");
+
+            // 2.获取数据
+            let filmList = mydata.movieList;
+            console.log(filmList);
+
+            // 3.循环数据
+            for(let i=0; i<filmList.length; i++){
+                let each = filmList[i];     //每一条数据
+                if(each.version){
+                    var xD = each.version.substring(1,3).toUpperCase();
+                    var xM = each.version.substr(4).toUpperCase();
+                    var flag = true;
+                }else{
+                    var xD = '';
+                    var xM = '';
+                    var flag = false;
+                }
+                let newContent = `
+                <li>
+                    <div class="left">
+                        <img src="${each.img.replace('w.h','128.180')}" alt="">
+                    </div>
+                    <ul class="right">
+                        <li>
+                            <div>
+                                <span>
+                                    ${each.nm}
+                                </span>
+                                <p class="${flag}">
+                                    <span>${xD}</span><span class="${flag}">${xM}</span>
+                                </p>
+                            </div>
+                            <p>观众评 <span>8.5</span></p>
+                            <p>主演: ${each.star}</p>
+                            <p>
+                                ${each.showInfo}
+                            </p>
+                        </li>
+                        <li>
+                            <span>购票</span>
+                        </li>
+                    </ul>
+                </li>
+                `
+                oUl.innerHTML += newContent;
+            }
+
+        }
+    </script>
+</body>
+</html>

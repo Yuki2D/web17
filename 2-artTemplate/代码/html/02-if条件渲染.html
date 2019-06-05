@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 1.引入 -->
+    <script src="../js/artTemplate.js"></script>
+</head>
+<body>
+    <!-- 2.页面容器 -->
+    <div id="container">
+
+    </div>
+
+    <!-- 3.模板 -->
+    <script type="text/html" id="module">
+        <div>{{name}}</div>
+
+        <div>
+            {{if version}}
+                {{version}}
+            {{/if}}
+        </div>
+
+        {{if globalReleased}}
+        <div>购票</div>
+        {{else}}
+        <div>预售</div>
+        {{/if}}
+
+        {{if readyState==4 && status == 200}}
+            请求成功
+        {{else if readyState==4}}
+            请联系管理员
+        {{else if readyState==3}}
+            发送了
+        {{else}}
+            ...
+        {{/if}}
+
+        <!-- 嵌套条件判断 -->
+        {{if readyState == 4}}
+            {{if status == 200}}
+                请求成功了
+                {{else if status == 502}}
+                联系运维
+                {{else if status == 404}}
+                找不到页面
+                {{else}}
+                请找万能的管理员
+            {{/if}}
+        {{/if}}
+    </script>
+
+    <script>
+        let data = {
+            name: "哥斯拉2: 怪兽之王",
+            version: '',
+            globalReleased: false,
+            readyState: 4,
+            status: 502
+        }
+        // 4.将数据渲染到模板
+        let html = template("module", data);
+
+        // 5.将渲染好数据的模板添加到页面
+        document.querySelector("#container").innerHTML = html;
+    </script>
+</body>
+</html>

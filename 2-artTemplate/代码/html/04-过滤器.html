@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/artTemplate.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script type="text/html" id="module">
+        <p>{{gender | change}}</p>
+        <p>
+            {{status | changeStatus}}
+        </p>
+        <p>
+            {{premiereAt | getTime}}
+        </p>
+    </script>
+
+    <script>
+        let data = {
+            gender: 1,
+            status: 301,
+            premiereAt: 1556496000
+        }
+
+        // 定义过滤器(参数是需要进行过滤的数据)
+        template.defaults.imports.change = gender=>{
+            switch(gender){
+                case 0: return "女";
+                break;
+                case 1: return "男";
+                break;
+            }   
+        }
+
+        // changeStatus是过滤器的名字
+        template.defaults.imports.changeStatus = aa=>{
+            if(aa == 404) return "找不到页面"
+            else if(aa == 301) return "暂时重定向"
+        }
+
+        //时间戳转标准格式时间的过滤器
+        template.defaults.imports.getTime = time=>{
+            let nowTime = new Date(time*1000);
+            let year = nowTime.getFullYear();   //年
+            let month = addZero(nowTime.getMonth()+1);     //月
+            let date = addZero(nowTime.getDate());   //日
+            let hour = addZero(nowTime.getHours());  //小时
+            let minutes = addZero(nowTime.getMinutes());  //分钟
+            let second = addZero(nowTime.getSeconds());  //秒
+
+            function addZero(num){
+                if(num < 10){
+                    return '0'+num;
+                }else{
+                    return num;
+                }
+            }
+            return `${year}-${month}-${date} ${hour}:${minutes}:${second}`
+        }
+
+        let html = template("module", data);
+        document.querySelector("#container").innerHTML = html;
+    </script>
+</body>
+</html>

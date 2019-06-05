@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/artTemplate.js"></script>
+    <script src="../js/jq.js"></script>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+
+    <script>
+        // 1.获取数据
+        async function getData(){
+            let res = await $.ajax("https://www.easy-mock.com/mock/5ba06ec82ee5a7654dc13dd7/example/movieInfo");
+            let data = {
+                list: res.movieList
+            }
+            // 2. 引入外部模板(第一个参数是外部模板的路径, 第二个参数是回调函数[形参指向外部模板])
+            $.get("./00-外部模板.html", html=>{
+                // 3. 将数据渲染到外部模板
+
+                // 3-1. 将外部模板编译成函数，将数据当做实参传入进行渲染
+                // let myhtml = template.compile(html)(data);
+
+                // 3-2. 将模板源代码编译成函数并立刻执行
+                let myhtml = template.render(html, data);
+
+                // 4.将渲染好数据的模板添加到页面容器
+                document.querySelector("#container").innerHTML = myhtml;
+            })
+        }
+        getData()
+    </script>
+</body>
+</html>

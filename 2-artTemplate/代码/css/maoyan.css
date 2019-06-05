@@ -1,0 +1,83 @@
+html,body,div,ul,li,p,span,i{margin: 0; padding: 0}
+ul,li{list-style: none;}
+#maoyan>ul>li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    padding: 15px 20px;
+}
+.left{
+    width: 65px;
+    height: 100%;
+}
+.left img{
+    height: 100%;
+}
+.right{
+    height: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 10px;
+}
+.right li:nth-child(1){
+    height: 100%;
+    color: #666;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+.right li:nth-child(1)>div:nth-child(1){
+    font-size: 16px;
+    display: flex;
+    width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.right li:nth-child(1)>div:nth-child(1)>span{
+    font-weight: bold;
+    display: inline-block;
+} 
+.right li:nth-child(1)>div:nth-child(1) p span{
+    font-size: 12px;
+}
+.right li:nth-child(1)>div:nth-child(1) p span:nth-child(1){
+    background: lightblue;
+    color: #fff;
+    border-radius: 2px; 
+    padding: 0 3px;
+}
+.right li:nth-child(1)>div:nth-child(1) p span:nth-child(2){
+    border: 1px solid lightblue;
+    color: lightblue;
+    padding: 0 2px;
+}
+.right li:nth-child(1)>p:nth-child(2) span{
+    color: #faaf00;
+    font-weight: bold;
+}
+.right li:nth-child(1)>p:nth-child(3){
+    width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.right li:nth-child(2) span{
+    display: inline-block;
+    width: 47px;
+    height: 27px;
+    background: red;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 27px;
+    color: #fff;
+    font-size: 12px;
+}
+.false{
+    display: none;
+}

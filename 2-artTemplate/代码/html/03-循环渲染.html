@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/artTemplate.js"></script>
+</head>
+<body>
+    <!--
+        循环渲染时, 如果不指定每一个数据的值和索引, 则默认使用$value和$index
+    -->
+    <ul id="container1"></ul>
+    <ul id="container2"></ul>
+
+    <script type="text/html" id="module1">
+        {{each filmList}}
+        <li>
+            {{$index}}
+            <p>{{$value.name}}</p>
+            <p>
+                {{if $value.globalReleased}}
+                购票
+                {{else}}
+                预售
+                {{/if}}
+            </p>
+            <p>主演: 
+                {{each $value.star}}
+                    {{$value}}
+                {{/each}}
+            </p>
+        </li>
+        {{/each}}
+    </script>
+
+    <!-- 循环渲染 命名 -->
+    <script type="text/html" id="module2">
+        {{each filmList val ind}}  
+        <li>
+            {{ind}}
+            <p>{{val.name}}</p>
+            <p>
+                {{if val.globalReleased}}
+                购票
+                {{else}}
+                预售
+                {{/if}}
+            </p>
+            <p>主演: 
+                {{each val.star one}}
+                    {{one}}
+                    {{val.name}}
+                {{/each}}
+            </p>
+        </li>
+        {{/each}}
+    </script>
+
+    <script>
+        let data = {
+            filmList: [
+                {name: "哥斯拉2: 怪兽之王", globalReleased: true, star: ["凯尔·钱德勒","维拉·法梅加","米莉·波比·布朗"]},
+                {name: "X战警：黑凤凰", globalReleased: false, star: ["苏菲·特纳","詹姆斯·麦卡沃伊","迈克尔·法斯宾德"]},
+                {name: "追龙Ⅱ", globalReleased: false, star: ["梁家辉","古天乐","林家栋"]},
+                {name: "阿拉丁", globalReleased: true, star: ["梅纳·玛索德","娜奥米·斯科特","马尔万·肯扎里"]},
+                {name: "哆啦A梦：大雄的月球探险记", globalReleased: true, star: ["水田山葵","大原惠美","嘉数由美"]},
+            ]
+        }
+        let html1 = template("module1", data);
+        let html2 = template("module2", data);
+        document.querySelector("#container1").innerHTML = html1;
+        document.querySelector("#container2").innerHTML = html2;
+
+        // data.filmList[0].star.forEach(ele=>{
+        //     console.log(ele)
+        // })
+    </script>
+</body>
+</html>

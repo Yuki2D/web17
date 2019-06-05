@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/artTemplate.js"></script>
+    <style>
+        #container1{
+            border: 1px solid #ccc;
+            background: lightblue;
+        }
+        #container2{
+            border: 1px solid #ccc;
+            background: lightgoldenrodyellow;
+        }
+        #container3{
+            border: 1px solid #ccc;
+            background: lightpink;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        当需要复用模板时, 使用{{include 'son1' a}} 
+        其中, son1指的是复用模板的id名, a指的是在该模板中需要渲染的数据
+    -->
+    <div id="container1">
+        父亲: 
+    </div>
+    <div id="container2">
+        前妻: 
+    </div>
+    <div id="container3">
+        现任妻子: 
+    </div>
+
+    <script type="text/html" id="dad">
+        {{include 'son1' a}}    
+        {{include 'son2' b}}
+    </script>
+
+    <script type="text/html" id="mom1">
+        {{include 'son1' a}}
+    </script>
+
+    <script type="text/html" id="mom2">
+        {{include 'son2' b}}
+    </script>
+
+    <script type="text/html" id="son1">
+        <div>
+            头发: {{hair}}
+            眼睛: {{eyes}}
+        </div>
+    </script>
+
+    <script type="text/html" id="son2">
+        <div>
+            头发: {{hair}}
+            眼睛: {{eyes}}
+            身高: {{height}}
+        </div>
+    </script>
+
+    <script>
+        let data = {
+            a: {
+                eyes: "big",
+                hair: "green",
+            },
+            b: {
+                eyes: "small",
+                hair: "yellow",
+                height: 180
+            }
+        }
+        let dadHtml = template("dad", data);
+        let mom1Html = template("mom1", data);
+        let mom2Html = template("mom2", data);
+        document.querySelector("#container1").innerHTML += dadHtml;
+        document.querySelector("#container2").innerHTML += mom1Html;
+        document.querySelector("#container3").innerHTML += mom2Html;
+        
+    </script>
+</body>
+</html>

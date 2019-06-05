@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 1.引入模板引擎 -->
+    <script src="../js/artTemplate.js"></script>
+    <script src="../js/data.js"></script>
+</head>
+<body>
+    <!-- 2.页面容器 -->
+    <div id="container"></div>
+    <div id="content"></div>
+
+    <!-- 3.模板 -->
+    <script type="text/html" id="module1">
+        <h2>{{name}}</h2>
+        <p>{{info}}</p>
+        <input type="text" value="{{msg}}" /> 
+        <p>{{@tag}}</p>     
+    </script>
+
+    <script type="text/html" id="module2">
+        <h2>{{nm}}</h2>
+        <p>{{star}}</p>
+        <input type="text" value="{{showInfo}}" /> 
+    </script>
+
+    <script>
+        let data = {
+            name: "何以为家",
+            info: "这是一部电影",
+            msg: "你好",
+            tag: "<span>span标签</span>"    //如果想要显示为标签, 则渲染时添加@
+        }
+        // 4.根据模板名渲染数据[template(模板名, 数据)]
+        let html = template("module1", data);
+        let myhtml = template("module2", mydata.movieList[0]);  //引入外部js的数据进行渲染
+
+        // 5.将渲染好数据的模板添加到页面容器
+        document.querySelector("#container").innerHTML = html;
+        document.querySelector("#content").innerHTML += myhtml;
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<ul>
+    {{each list val ind}}
+    <li>
+        <div class="left">
+            <img src='{{val.img.replace("w.h","128.180")}}' alt="">
+        </div>
+        <ul class="right">
+            <li>{{val.nm}}</li>
+        </ul>
+    </li>
+    {{/each}}
+</ul>
