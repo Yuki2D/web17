@@ -1,6 +1,6 @@
 html,body,div,ul,li,p,span,i{margin: 0; padding: 0}
 ul,li{list-style: none;}
-#maoyan>ul>li{
+#main>ul>li{
     display: flex;
     justify-content: space-between;
     align-items: center;

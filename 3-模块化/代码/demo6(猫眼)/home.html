@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/libs/require.js" data-main="./js/main"></script>
+    <link rel="stylesheet" href="./css/maoyan.css">
+    <link rel="stylesheet" href="./css/iconfont.css">
+    <style>
+        #tabbar{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 48px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: .5px solid #d8d8d8;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        1. 整个项目分为两个模块(主要显示容器和切换卡)
+        2. 切换卡分为三个模块(电影, 影院, 我的)
+
+
+    -->
+    <div id="maoyan">
+        <div id="main"></div>
+        <ul id="tabbar"></ul>
+    </div>
+</body>
+</html>

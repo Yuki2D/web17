@@ -1,0 +1,46 @@
+{{each movieList val}}
+<li>
+	<div class="left">
+		<img src="{{val.img.replace('w.h','128.180')}}" alt="">
+	</div>
+	<ul class="right">
+		<li>
+			<div>
+				{{if val.version || val.preShow}}
+				<span style="max-width: 180px;">{{val.nm}}</span>
+				{{else}}
+				<span style="width: 200px;">{{val.nm}}</span>
+				{{/if}}
+				<p style="display: flex; align-items: center;">
+					{{if val.version}}
+					<span>{{val.version.substring(1,3).toUpperCase()}}</span>
+						{{if val.version.substr(4)}}
+						<span>{{val.version.substr(4).toUpperCase()}}</span>
+						{{/if}}
+					{{else if val.preShow}}
+					<span class="preShow">点映</span>
+					{{/if}}
+				</p>
+			</div>
+			{{if val.sc==0 && val.globalReleased}}
+			<p>暂无评分</p>
+			{{else if val.sc==0}}
+			<p><span>{{val.wish}}</span>人想看</p>
+			{{else}}
+			<p>观众评 <span>{{val.sc}}</span></p>
+			{{/if}}
+			<p>主演: {{val.star}}</p>
+			<p>
+				{{val.showInfo}}
+			</p>
+		</li>
+		<li>
+			{{if val.showst==3}}
+			<span class="onsale">购票</span>
+			{{else if val.showst==4}}
+			<span class="presale">预售</span>
+			{{/if}}
+		</li>
+	</ul>
+</li>
+{{/each}}

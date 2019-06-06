@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- data-main指定入口文件 -->
+    <script src="./js/libs/require.js" data-main="./js/main"></script>
+</head>
+<body>
+    <!--
+        1.在index.html文件引入require.js, 并定义main.js为入口文件
+
+        2.main.js
+            2-1. 进行基础配置(通过require.config(),参数接收一个对象)
+            2-2. 通过require()进行依赖模块的引入, 第一个参数是数组形式["依赖模块名1","依赖模块名2"], 第二个参数是回调函数(该回调函数的参数是对应的依赖模块)
+        
+        3.依赖模块
+            如: moduleA.js
+                通过define进行模块定义
+    -->
+</body>
+</html>
