@@ -1,8 +1,8 @@
 require.config({
     paths: {    //需要在tabbar模块引入的模块路径
-        film: "../modules/film/film",
-        cinema: "../modules/cinema/cinema",
-        mine: "../modules/mine/mine",
+        film: "../modules/film/film",   //电影
+        cinema: "../modules/cinema/cinema", //影院
+        mine: "../modules/mine/mine",   //我的
     }
 })
 

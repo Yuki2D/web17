@@ -6,7 +6,8 @@ require.config({
         i18n: "./i18n",
         jquery: "./jq",
         AT: "./artTemplate",
-        home: "../modules/home"
+        home: "../modules/home",
+        loadData: "../modules/common/loadData"
     }
 })
 

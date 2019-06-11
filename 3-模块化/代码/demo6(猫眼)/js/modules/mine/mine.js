@@ -7,6 +7,6 @@ define(["text!./mine.html", "AT"], function(html, AT) {
         $("#main").html(newHtml);
     }
     return {
-        initView: initView
+        initView
     }
 });

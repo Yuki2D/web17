@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    webpack的四个核心概念:
+        1. entry: 入口(依赖图的起始文件)
+        2. output: 出口(打包后的文件名及位置)
+        3. loader: 加载器(css-loader, file-loader, url-loader...)
+        4. plugins: 插件
+
+
+    webpack基本安装:
+        1. 新建文件夹(如: 01-basic_setup)
+        2. 在新建的文件夹中右击, "在终端中打开"
+        3. 在终端中输入: npm init -y 进行初始化, 会创建一个package.json文件
+        4. 在终端中输入: npm install webpack webpack-cli --save-dev 进行安装webpack及webpack脚手架
+        5. 建立项目目录
+            01-basic_setup
+                dist
+                    index.html
+                src
+                    index.js
+                node_modules(自动生成)
+                package-lock.json(自动生成)
+                package.json(npm init -y时生成)
+        6. 在终端中输入: npm i lodash --save-dev    安装lodash工具库
+        7. index.js文件
+            引入lodash的_
+        8. index.html
+            引入main.js(在执行npx webpack时会自动将脚本文件作为入口起点, 并打包输出到main.js)
+        9. 在终端中输入: npx webpack(会在dist目录下生成main.js)
+</body>
+</html>

@@ -1,0 +1,226 @@
+<style>
+    html,body,div,ul,li,p,span,i{margin: 0; padding: 0}
+    ul,li{list-style: none;}
+    #film_content>#main-content>ul>li{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 90px;
+        padding: 15px 0;
+    }
+    .left{
+        width: 65px;
+        height: 100%;
+    }
+    .left img{
+        height: 100%;
+    }
+    .right{
+        height: 100%;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 10px;
+    }
+    .right li:nth-child(1){
+        height: 100%;
+        color: #666;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+    }
+    .right li:nth-child(1)>div:nth-child(1){
+        font-size: 16px;
+        display: flex;
+    }
+    .right li:nth-child(1)>div:nth-child(1)>span{
+        margin-right: 5px;
+        font-weight: bold;
+        display: inline-block;
+        overflow: hidden; 
+        text-overflow: ellipsis; 
+        white-space: nowrap;
+    } 
+    .right li:nth-child(1)>div:nth-child(1) p span{
+        font-size: 12px;
+    }
+    .right li:nth-child(1)>div:nth-child(1) p span:nth-child(1){
+        background: lightblue;
+        color: #fff;
+        border-radius: 2px; 
+        padding: 0 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .right li:nth-child(1)>div:nth-child(1) p span:nth-child(2){
+        border: 1px solid lightblue;
+        color: lightblue;
+        padding: 0 2px;
+    }
+    .right li:nth-child(1)>p:nth-child(2) span{
+        color: #faaf00;
+        font-weight: bold;
+    }
+    .right li:nth-child(1)>p:nth-child(3){
+        width: 200px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .right li:nth-child(2) span{
+        display: inline-block;
+        width: 47px;
+        height: 27px;
+        background: #f03d37;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 27px;
+        color: #fff;
+        font-size: 12px;
+    }
+    .false{
+        display: none;
+    }
+    .right li:nth-child(2) .presale{
+        background: #3c9fe6;
+    }
+    .right li:nth-child(2) .wish{
+        background: #faaf00;
+    }
+    .right li:nth-child(1)>div:nth-child(1) p span:nth-child(1).preShow{
+        background: #faaf00;
+    }
+    #expect{
+        padding-bottom: 20px;
+        font-size: 0.875rem;
+    }
+    #expect>p{
+        height: 40px;
+        line-height: 40px;
+    }
+    #expect>ul{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        overflow-x: auto;
+    }
+    #expect>ul::-webkit-scrollbar{
+        display: none;
+    }
+    #expect>ul li{
+        margin-right: 10px;
+    }
+    #expect>ul img{
+        width: 85px;
+        height: 115px;
+    }
+    #expect>ul p{
+        width: 85px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    #expect>ul li>div{
+        font-size: 0.75rem;
+        position: relative;
+    }
+    #expect>ul li>div:first-child p{
+        position: absolute;
+        bottom: 3px;
+        color: #faaf00;
+        font-weight: bold;
+        text-align: center;
+        background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,.2));
+    }
+    #expect>ul li>div:nth-child(2) p:nth-child(1){
+        font-weight: bold;
+    }
+    #expect>ul li>div:nth-child(2) p:nth-child(2){
+        color: #999;
+    }
+    #main-content{
+        padding-top: 10px;
+        border-top: 10px solid #f0f0f0;
+    }
+    #main-content>p{
+        font-size: 0.875rem;
+    }
+</style>
+<div id="expect">
+    <p>近期最受期待</p>
+    <ul>
+        {{each coming val}}
+        <li>
+            <div>
+                <img src="{{val.img.replace('w.h','170.230')}}" alt="">
+                <p>{{val.wish}}人想看</p>
+            </div>
+            <div>
+                <p>{{val.nm}}</p>
+                <p>{{val.comingTitle.split(" ")[0]}}</p>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+<div id="main-content">
+{{each commingsoon one}}
+<p>
+    {{one.title}}
+</p>
+<ul>
+    {{each one.content val}}
+    <li>
+        <div class="left">
+            <img src="{{val.img.replace('w.h','128.180')}}" alt="">
+        </div>
+        <ul class="right">
+            <li>
+                <div>
+                    {{if val.version || val.preShow}}
+                    <span style="max-width: 180px;">{{val.nm}}</span>
+                    {{else}}
+                    <span style="width: 200px;">{{val.nm}}</span>
+                    {{/if}}
+                    <p style="display: flex; align-items: center;">
+                        {{if val.version}}
+                        <span>{{val.version.substring(1,3).toUpperCase()}}</span>
+                            {{if val.version.substr(4)}}
+                            <span>{{val.version.substr(4).toUpperCase()}}</span>
+                            {{/if}}
+                        {{else if val.preShow}}
+                        <span class="preShow">点映</span>
+                        {{/if}}
+                    </p>
+                </div>
+                {{if val.sc==0 && val.globalReleased}}
+                <p>暂无评分</p>
+                {{else if val.sc==0}}
+                <p><span>{{val.wish}}</span>人想看</p>
+                {{else}}
+                <p>观众评 <span>{{val.sc}}</span></p>
+                {{/if}}
+                <p>主演: {{val.star}}</p>
+                <p>
+                    {{val.rt}}上映
+                </p>
+            </li>
+            <li>
+                {{if val.showst==3}}
+                <span class="onsale">购票</span>
+                {{else if val.showst==1}}
+                <span class="wish">想看</span>
+                {{else if val.showst==4}}
+                <span class="presale">预售</span>
+                {{/if}}
+            </li>
+        </ul>
+    </li>
+    {{/each}}
+</ul>
+{{/each}}
+</div>

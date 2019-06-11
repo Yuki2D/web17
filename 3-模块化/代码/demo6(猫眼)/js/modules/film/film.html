@@ -1,3 +1,43 @@
-<div>
-    {{title}}
+<style>
+    #film header{
+        background: #e54847;
+        height: 50.5px;
+        text-align: center;
+        line-height: 50px;
+        color: #fff;
+        font-size: 18px;
+        border-bottom: 1px solid #e54847;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+    }
+    #nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 0.9375rem;
+        height: 44px;
+        border-bottom: 1px solid #e6e6e6;
+        position: fixed;
+        z-index: 1;
+        top: 51.5px;
+        left: 0;
+        right: 0;
+        background: #fff;
+    }
+    #film_content{
+        margin-top: 96.5px;
+        margin-bottom: 48px;
+        padding: 0 15px;
+    }
+</style>
+
+<div id="film">
+    <header>猫眼电影</header>
+    <!-- 电影的导航切换S -->
+    <div id="nav"></div>
+    <!-- 电影的导航切换E -->
+    <div id="film_content"></div>
 </div>
