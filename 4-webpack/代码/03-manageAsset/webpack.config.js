@@ -1,4 +1,5 @@
 const path = require("path");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     entry: "./src/index.js",
@@ -9,11 +10,11 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/, //匹配css的正则表达式
-                use: [
-                    'style-loader',
-                    'css-loader'
-                ]
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                  fallback: "style-loader",
+                  use: "css-loader"
+                })
             },
             {
                 test: /\.(png|svg|jpg|gif)$/, //匹配图片的正则表达式
@@ -22,5 +23,8 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        new ExtractTextPlugin("styles.css")
+    ]
 }
